@@ -1,163 +1,146 @@
-# Personal Finance Tracker
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-A comprehensive Django-based web application to manage and analyze personal financial health.
+<body style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: auto; padding: 20px;">
 
-## Features
+  <h1>💰 Personal Finance Tracker</h1>
 
-### Day 1-2: Basic Functionality
-- ✅ User Authentication (Register, Login, Profile Management)
-- ✅ Database Structure (Income, Expenses, Transactions)
-- ✅ Transaction Management (Add, Edit, Delete with edge case handling)
-- ✅ Dashboard with graphical representations
-- ✅ Financial Reporting (Monthly income vs expenses)
-- ✅ Budget Goals and Tracking
+  <p>
+    🔗 <strong>Live Application:</strong>
+    <a href="https://anay-expense-tracker.vercel.app" target="_blank">Frontend</a><br/>
+    🔗 <strong>Backend API:</strong>
+    <a href="https://anay-finance-tracker-backend.duckdns.org/api" target="_blank">Backend</a>
+  </p>
 
-### Day 3: Additional Features
-- ✅ OAuth Integration (Google Sign-in)
-- ✅ Email Notifications (Budget overruns via SendGrid)
-- ✅ Receipt Uploading
-- ✅ Multiple Currency Support
+  <p>
+    A full-stack finance management app built with <strong>Django</strong> and <strong>React</strong>,
+    helping users track income, expenses, and financial trends.
+  </p>
 
-### Day 4: Deployment
-- ✅ Production deployment
-- ✅ Security and performance optimization
+  <hr />
 
-### Day 5: Testing
-- ✅ Comprehensive testing suite
+  <h2>📌 Project Overview</h2>
+  <p>
+    This application allows users to securely manage personal financial records, upload receipts,
+    analyze spending patterns, and generate reports. The system integrates authentication,
+    RESTful APIs, cloud-hosted databases, and a responsive frontend dashboard.
+  </p>
 
-### Part B: Extra Credit
-- 🔄 OpenAI Integration
-- 🔄 Bank Statement Import (PDF/CSV)
-- 🔄 Anomaly Detection
+  <hr />
 
-## Tech Stack
+  <h2>🚀 Features</h2>
 
-- **Backend**: Django 5.0, Django REST Framework
-- **Database**: PostgreSQL
-- **Authentication**: Django Allauth (OAuth)
-- **Email**: SendGrid
-- **Frontend**: Django Templates, HTML, CSS
-- **Deployment**: Heroku/AWS/DigitalOcean
+  <h3>🔐 Authentication</h3>
+  <ul>
+    <li>User registration and login</li>
+    <li>Google OAuth via Django Allauth</li>
+    <li>Secure profile handling</li>
+  </ul>
 
-## Installation
+  <h3>💸 Transactions</h3>
+  <ul>
+    <li>Add, edit, delete income & expenses</li>
+    <li>Negative amounts supported (refunds)</li>
+    <li>Decimal precision for financial accuracy</li>
+  </ul>
 
-### Prerequisites
-- Python 3.8+
-- PostgreSQL 12+ (Download from https://www.postgresql.org/download/)
-- Git
+  <h3>🧾 Receipt Upload</h3>
+  <ul>
+    <li>Attach receipts to transactions</li>
+  </ul>
 
-### Setup Steps
+  <h3>🌍 Multi-Currency</h3>
+  <ul>
+    <li>Store and display transactions in multiple currencies</li>
+  </ul>
 
-1. Clone the repository:
-```bash
-git clone https://github.com/Anay-Mahajan/FJ-BE-R2Anay-IIITPune.git
-cd FJ-BE-R2Anay-IIITPune
-```
+  <h3>📊 Dashboard & Reports</h3>
+  <ul>
+    <li>Visual financial summaries</li>
+    <li>Monthly and category-wise reports</li>
+  </ul>
 
-2. Create virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+  <h3>📧 Notifications</h3>
+  <ul>
+    <li>Email alerts using SMTP integration</li>
+  </ul>
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+  <p><em>⚠️ Budget feature coming in a future update.</em></p>
 
-4. Install and setup PostgreSQL:
-   - Download from https://www.postgresql.org/download/windows/
-   - Install PostgreSQL (remember the password!)
-   - See `QUICKSTART.md` for detailed setup instructions
+  <hr />
 
-5. Set up environment variables:
-   - Copy `.env.example` to `.env`
-   - Update `DATABASE_PASSWORD` with your PostgreSQL password
-   - Update other settings as needed
+  <h2>🛠 Tech Stack</h2>
+  <ul>
+    <li><strong>Frontend:</strong> React (Vite)</li>
+    <li><strong>Backend:</strong> Django 5 + Django REST Framework</li>
+    <li><strong>Database:</strong> PostgreSQL on AWS RDS</li>
+    <li><strong>Authentication:</strong> Django Allauth (Google OAuth)</li>
+    <li><strong>Deployment:</strong> AWS (Backend) + Vercel (Frontend)</li>
+  </ul>
 
-6. Create database:
-```bash
-python setup_database.py
-```
-Or manually create database named `finance_tracker` in pgAdmin
+  <hr />
 
-7. Test database connection:
-```bash
-python test_postgres_connection.py
-```
+  <h2>📁 Project Structure</h2>
 
-8. Run migrations:
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
+  <pre><code>FJ-BE-R2Anay-IIITPune/
+│
+├── accounts/           # User authentication & profiles
+├── dashboard/          # Dashboard and financial reports
+├── transactions/       # Income & expense logic
+├── finance_tracker/    # Django project settings
+├── frontend/           # React frontend (Vite)
+│
+├── manage.py
+├── requirements.txt
+├── .env
+└── README.md
+</code></pre>
 
-9. Create superuser:
-```bash
+  <hr />
+
+  <h2>⚙️ Backend Setup (Django)</h2>
+
+  <pre><code>python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt</code></pre>
+
+  <p>Create a <code>.env</code> file:</p>
+
+  <pre><code>DEBUG=True
+SECRET_KEY=your_secret_key
+DATABASE_NAME=finance_tracker
+DATABASE_USER=postgres
+DATABASE_PASSWORD=your_password
+DATABASE_HOST=your_rds_endpoint
+DATABASE_PORT=5432
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+EMAIL_HOST_USER=your_email
+EMAIL_HOST_PASSWORD=your_email_password</code></pre>
+
+  <pre><code>python manage.py migrate
 python manage.py createsuperuser
-```
+python manage.py runserver</code></pre>
 
-10. Run development server:
-```bash
-python manage.py runserver
-```
+  <hr />
 
-Visit http://127.0.0.1:8000/admin to access the admin panel.
+  <h2>💻 Frontend Setup (React)</h2>
 
-## Project Structure
+  <pre><code>cd frontend
+npm install
+npm run dev</code></pre>
 
-```
-finance_tracker/
-├── finance_tracker/          # Project settings
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── accounts/                 # User authentication
-├── transactions/             # Transaction management
-├── dashboard/                # Dashboard and reports
-├── notifications/            # Email notifications
-├── templates/                # HTML templates
-├── static/                   # CSS, JS, images
-├── media/                    # User uploads
-└── manage.py
-```
+  <hr />
 
-## API Endpoints
+  <h2>👨‍💻 Author</h2>
+  <p><strong>Anay Mahajan</strong><br/>Backend Developer</p>
 
-### Authentication
-- `POST /api/auth/register/` - User registration
-- `POST /api/auth/login/` - User login
-- `GET /api/auth/profile/` - User profile
+  <hr />
 
-### Transactions
-- `GET /api/transactions/` - List all transactions
-- `POST /api/transactions/` - Create transaction
-- `PUT /api/transactions/<id>/` - Update transaction
-- `DELETE /api/transactions/<id>/` - Delete transaction
-
-### Categories
-- `GET /api/categories/` - List categories
-- `POST /api/categories/` - Create category
-
-### Budget
-- `GET /api/budgets/` - List budgets
-- `POST /api/budgets/` - Create budget goal
-
-### Reports
-- `GET /api/reports/monthly/` - Monthly report
-- `GET /api/reports/category/` - Category-wise report
-
-## Testing
-
-Run tests:
-```bash
-python manage.py test
-```
-
-## Deployment
-
-Deployment instructions for production environment.
-
-## License
-
-MIT License
+ 
+</body>
+</html>
